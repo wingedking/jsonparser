@@ -59,10 +59,7 @@ function JSONParser(string) {
 		let inKey = false, inValue = false, key = "", value = "";
 		const obj = {};
 		for(let i = 0; i < string.length; i++){
-			if(!inKey && !inValue && string[i] === '"'){
-				inKey = true;
-			}
-			else if(inKey){
+			if(inKey){
 				if(string[i] !== '"'){
 					key += string[i];
 				}
@@ -81,6 +78,9 @@ function JSONParser(string) {
 				// next iteration in the string will be
 				// iterating through the value string
 				inValue = true;
+			}
+			else if(string[i] === '"'){
+				inKey = true;
 			}
 		}
 		return obj;
