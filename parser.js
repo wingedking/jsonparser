@@ -77,7 +77,7 @@ function JSONParser(string) {
 				inValue = false;
 				key = "";
 			}
-			else if(!inKey && key !== "" && string[i] === ':'){
+			else if(string[i] === ':'){
 				// next iteration in the string will be
 				// iterating through the value string
 				inValue = true;
